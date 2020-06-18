@@ -67,7 +67,7 @@ int main() {
                 string search_department;
                 cout << "Nhap bo phan lam viec can tim: ";
                 getline(cin, search_department);
-                if(list.check_if_contain_by_name(search_department) == true){
+                if(list.check_if_contain_by_depart(search_department) == true){
                     cout << list.search_employee_by_department(search_department).get_ma_nhan_vien() << ", "
                          << list.search_employee_by_department(search_department).get_ten() << ", "
                          << list.search_employee_by_department(search_department).get_dia_chi() << ", "
@@ -77,7 +77,7 @@ int main() {
                 }
 
             } else {
-                cout << "Lua chon khong hop le";
+                cout << "Lua chon khong hop le" <<endl;
             }
         }
         else if (choice == 3){
