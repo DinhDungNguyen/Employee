@@ -190,7 +190,6 @@ void List::display_list() {
             i = 0;
             Employee* employee_new = new Employee(maNhanVien, hoTen, diaChi, boPhan, ngay, thang, nam);
             this->add_employee_at_last(*employee_new);
-            continue;
         }
         i++;
     }
