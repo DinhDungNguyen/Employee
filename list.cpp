@@ -149,6 +149,8 @@ void List::display_list() {
         int i = 1;
         string maNhanVien, hoTen;
         string diaChi, boPhan;
+        string ngay_str, thang_str, nam_str;
+        int ngay, thang, nam;
 
         ifstream reader("D:\\employee.txt");
         if (!reader) {
@@ -163,8 +165,6 @@ void List::display_list() {
             else if (i == 2)
                 getline(reader, hoTen, ',');
             else if (i == 3){
-            string ngay_str, thang_str, nam_str;
-            int ngay, thang, nam;
 
             getline(reader, ngay_str, '/');
             getline(reader, thang_str, '/');
@@ -182,14 +182,14 @@ void List::display_list() {
             converter >> nam;
             converter.clear();
 
-            Employee* employee_new = new Employee(maNhanVien, hoTen, diaChi, boPhan, ngay, thang, nam);
-            this->add_employee_at_last(*employee_new);
     }
         else if (i == 4)
             getline(reader, diaChi, ',');
         else if (i == 5) {
             getline(reader, boPhan);
             i = 0;
+            Employee* employee_new = new Employee(maNhanVien, hoTen, diaChi, boPhan, ngay, thang, nam);
+            this->add_employee_at_last(*employee_new);
             continue;
         }
         i++;
