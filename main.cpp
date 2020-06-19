@@ -7,7 +7,8 @@ void menu() {
     cout << "= 1 - Nhap thong tin nhan vien                =" << endl;
     cout << "= 2 - Tim thong tin nhan vien                 =" << endl;
     cout << "= 3 - Import danh sach nhan vien tu file csv  =" << endl;
-    cout << "= 4 - Diem danh nhan vien theo ngay           =" << endl;
+    cout << "= 4 - Diem danh nhan vien                     =" << endl;
+    cout << "= 5 - Xem thong tin diem danh theo thang      =" << endl;
     cout << "= 0 - Thoat                                   =" << endl;
     cout << "===============================================" << endl;
 }
@@ -85,6 +86,14 @@ int main() {
         else if (choice == 3){
             list.read_csv_file();
             list.write_file();
+        }
+        else if(choice == 4){
+            list.input_Atd();
+            list.print_Atd_file();
+            list.update_Atd();
+        }
+        else if(choice == 5){
+
         }
         else if (choice == 0){
             cout << "Cam on!!\n";
