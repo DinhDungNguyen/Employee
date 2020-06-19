@@ -77,7 +77,9 @@ int main() {
                 }
 
             } else {
-                cout << "Lua chon khong hop le";
+                cout << "Lua chon khong hop le" <<endl;
+                cin.clear();
+                cin.ignore(1000, '\n');
             }
         }
         else if (choice == 3){
