@@ -7,7 +7,8 @@ void menu() {
     cout << "= 1 - Nhap thong tin nhan vien                =" << endl;
     cout << "= 2 - Tim thong tin nhan vien                 =" << endl;
     cout << "= 3 - Import danh sach nhan vien tu file csv  =" << endl;
-    cout << "= 4 - Diem danh nhan vien theo ngay           =" << endl;
+    cout << "= 4 - Diem danh nhan vien                     =" << endl;
+    cout << "= 5 - Xem thong tin diem danh theo thang      =" << endl;
     cout << "= 0 - Thoat                                   =" << endl;
     cout << "===============================================" << endl;
 }
@@ -56,10 +57,7 @@ int main() {
                 cout << "Nhap ten nhan vien can tim: ";
                 getline(cin, search_name);
                 if(list.check_if_contain_by_name(search_name) == true){
-                    cout << list.search_employee_by_name(search_name).get_ma_nhan_vien() << ", "
-                         << list.search_employee_by_name(search_name).get_ten() << ", "
-                         << list.search_employee_by_name(search_name).get_dia_chi() << ", "
-                         << list.search_employee_by_name(search_name).get_bo_phan()<< endl;
+                  list.search_employee_by_name(search_name);
                 } else{
                     cout<< "Khong tim thay nguoi do" << endl;
                 }
@@ -67,7 +65,7 @@ int main() {
                 string search_department;
                 cout << "Nhap bo phan lam viec can tim: ";
                 getline(cin, search_department);
-                if(list.check_if_contain_by_name(search_department) == true){
+                if(list.check_if_contain_by_depart(search_department) == true){
                     cout << list.search_employee_by_department(search_department).get_ma_nhan_vien() << ", "
                          << list.search_employee_by_department(search_department).get_ten() << ", "
                          << list.search_employee_by_department(search_department).get_dia_chi() << ", "
@@ -77,12 +75,22 @@ int main() {
                 }
 
             } else {
-                cout << "Lua chon khong hop le";
+                cout << "Lua chon khong hop le" <<endl;
+                cin.clear();
+                cin.ignore(1000, '\n');
             }
         }
         else if (choice == 3){
             list.read_csv_file();
             list.write_file();
+        }
+        else if(choice == 4){
+            list.input_Atd();
+            list.print_Atd_file();
+            list.update_Atd();
+        }
+        else if(choice == 5){
+
         }
         else if (choice == 0){
             cout << "Cam on!!\n";
