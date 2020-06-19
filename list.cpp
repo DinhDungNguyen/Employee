@@ -49,7 +49,6 @@ void List::display_list() {
     void List::add_employee_at_last() {
         Employee* new_employee = new Employee();
         cin >> *new_employee;
-
         if (this->first == nullptr) {
             this->first = new_employee;
         }
@@ -85,12 +84,14 @@ void List::display_list() {
         return *current_employee;
     }
 
-    Employee& List::search_employee_by_name(string name){
+    void List::search_employee_by_name(string name){
         Employee* current_employee = this->first;
-        while(current_employee != nullptr && current_employee->get_ten()!= name){
-            current_employee = current_employee->next;
+        while(current_employee != nullptr){
+            if (StringUtils::containIgnoreCase(current_employee->get_ten(), name)) {
+                current_employee->show();
         }
-        return *current_employee;
+        current_employee = current_employee->next;
+        };
     }
 
     Employee& List::search_employee_by_department(string depart){
@@ -129,7 +130,7 @@ void List::display_list() {
     bool List::check_if_contain_by_name(string name){
         Employee* current_employee = this->first;
         while (current_employee != nullptr) {
-            if (current_employee->get_ten() == name) {
+            if (StringUtils::containIgnoreCase(current_employee->get_ten(), name)) {
                 return true;
             }
             current_employee = current_employee->next;
@@ -3349,9 +3350,19 @@ void List::update_Atd(){
 void List::input_Atd(){
     string ma_nhan_vien;
     int nam;
-    cout << "Ma nhan vien: ";
-    cin.ignore();
-    getline(cin, ma_nhan_vien);
+    while(true){
+        cout << "Ma nhan vien: ";
+        cin.ignore();
+        getline(cin, ma_nhan_vien);
+        if(List::check_if_contain_by_id(ma_nhan_vien) == false){
+            cout << "Nhap sai ma nhan vien" << endl;
+            clear_Input();
+        }
+        if(cin.fail()){
+            cin.clear();
+            cin.ignore(10000, '\n');
+        }
+    }
     do {
         try {
                 cout << "Nhap ngay thang nam muon diem danh: ";
@@ -3363,7 +3374,7 @@ void List::input_Atd(){
 
                 check_Date(ngay, thang, nam); // kiem tra tinh hop le cua ngay sinh
 
-                clear_Input(); //don dep input thua con sot lai
+                clear_Input(); //don dep input
                 break;
             }
             catch (runtime_error e) {
@@ -3374,8 +3385,19 @@ void List::input_Atd(){
                 cout << "Ngay thang nam khong hop le" << endl;
             }
         } while (true);
-    cout << "Trang thai diem danh: ";
-    getline(cin, trang_thai);
+    while(true){
+        cout << "Trang thai diem danh: ";
+        cin.ignore();
+        getline(cin, trang_thai);
+        if(trang_thai != "DL" && trang_thai != "DLNN" && trang_thai != "N" && trang_thai != "NP"){
+            cout << "Nhap sai trang thai";
+            clear_Input();
+        }
+        if(cin.fail()){
+            cin.clear();
+            cin.ignore(1000, '\n');
+        }
+    }
 }
     int List::atd(){
         int temp= 0;
