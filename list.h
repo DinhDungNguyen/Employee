@@ -31,7 +31,11 @@ public:
     Employee& search_employee_by_id(string);
     Employee& search_employee_by_name(string);
     Employee& search_employee_by_department(string);
-    void print_statistics();
+    int atd();
+    void print_Atd_file();
+    void input_Atd();
+    int atd(string trang_thai);
+    void update_Atd();
 
     //void swap(Employee*&, Employee*&);
     bool check_if_contain_by_id(string id);
