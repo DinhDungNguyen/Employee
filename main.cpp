@@ -57,10 +57,7 @@ int main() {
                 cout << "Nhap ten nhan vien can tim: ";
                 getline(cin, search_name);
                 if(list.check_if_contain_by_name(search_name) == true){
-                    cout << list.search_employee_by_name(search_name).get_ma_nhan_vien() << ", "
-                         << list.search_employee_by_name(search_name).get_ten() << ", "
-                         << list.search_employee_by_name(search_name).get_dia_chi() << ", "
-                         << list.search_employee_by_name(search_name).get_bo_phan()<< endl;
+                  list.search_employee_by_name(search_name);
                 } else{
                     cout<< "Khong tim thay nguoi do" << endl;
                 }
@@ -68,7 +65,7 @@ int main() {
                 string search_department;
                 cout << "Nhap bo phan lam viec can tim: ";
                 getline(cin, search_department);
-                if(list.check_if_contain_by_name(search_department) == true){
+                if(list.check_if_contain_by_depart(search_department) == true){
                     cout << list.search_employee_by_department(search_department).get_ma_nhan_vien() << ", "
                          << list.search_employee_by_department(search_department).get_ten() << ", "
                          << list.search_employee_by_department(search_department).get_dia_chi() << ", "
